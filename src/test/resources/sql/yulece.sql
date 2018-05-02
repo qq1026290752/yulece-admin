@@ -4,7 +4,6 @@
  Source Server         : 阿里云
  Source Server Type    : MySQL
  Source Server Version : 50719
- Source Host           : 47.94.90.76:3306
  Source Schema         : yulece_aike
 
  Target Server Type    : MySQL
