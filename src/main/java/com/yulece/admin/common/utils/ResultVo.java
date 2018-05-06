@@ -62,8 +62,8 @@ public class ResultVo<T> {
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"})
-	public static <T> ResultVo<T> createSuccessResult(Integer code) {
-		return new ResultVo(code);
+	public static <T> ResultVo<T> createSuccessResult() {
+		return new ResultVo(ResultEnum.SUCCESS.getCode());
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"})

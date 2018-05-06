@@ -8,26 +8,25 @@ import java.util.Date;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
- * 权限模块实体类
+ *
  * @author wangyichao@28ph.cn
- * @Title: AdminAcl
+ * @Title: adminDclModule
  * @Package com.yulece.admin.model.admin
  * @Description:
- * @Date 创建时间2018/5/3-23:47
+ * @Date 创建时间2018/5/6-17:14
  **/
-@Entity
 @Data
-public class AdminAcl {
+@Entity
+public class adminDclModule {
 
     @Id
-    private Integer aclId;//权限模块
-    private String aclName;
-    private Integer aclModuleId;
-    private String aclUrl;
-    private Integer type;
+    private Integer moduleId;
+    private String moduleName;
+    private Integer moduleParentId;
+    private String moduleLevel ;
     private Integer status;
-    private Integer aclSeq;
-    private String aclRemark;
+    private Integer moduleSeq;
+    private String moduleRemark;
     private String operator;
     private String operateIp;
     private Date createTime;

@@ -1,6 +1,7 @@
 package com.yulece.admin.common.exception;
 
 import com.yulece.admin.common.enums.ExceptionEnum;
+import com.yulece.admin.common.enums.ParamEnum;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -22,6 +23,10 @@ public class YuleceException extends RuntimeException {
 	public YuleceException(ExceptionEnum exceptionEnum) {
 		super(exceptionEnum.getMessage());
 		this.code = exceptionEnum.getCode();
+	}
+	public YuleceException(ParamEnum paramEnum) {
+		super(paramEnum.getMessage());
+		this.code = paramEnum.getCode();
 	}
 
 	public YuleceException(Integer code, String message) {
