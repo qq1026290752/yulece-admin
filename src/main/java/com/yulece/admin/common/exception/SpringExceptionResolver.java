@@ -35,7 +35,7 @@ public class SpringExceptionResolver{
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public void handleGlobalException(HttpServletRequest request, Exception e, HttpServletResponse response) throws IOException {
-        if(e instanceof YuleceException){
+        if(e instanceof YuleceException|| e instanceof VoParamException){
             response.setContentType(MediaType.APPLICATION_JSON_UTF8.toString());
             response.getWriter().print( objectMapper.writeValueAsString(ResultVo.createErrorResult(e.getMessage())));
         }else{

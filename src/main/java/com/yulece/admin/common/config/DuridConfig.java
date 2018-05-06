@@ -57,4 +57,6 @@ public class DuridConfig {
 	public ServletRegistrationBean servletRegistrationBean() {
 		return new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
 	}
+
+
 }

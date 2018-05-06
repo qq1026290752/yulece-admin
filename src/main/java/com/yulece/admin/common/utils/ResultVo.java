@@ -1,6 +1,11 @@
 package com.yulece.admin.common.utils;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.yulece.admin.common.enums.ResultEnum;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -11,6 +16,7 @@ import com.yulece.admin.common.enums.ResultEnum;
  * @date: 创建时间2018年5月1日 - 下午4:48:02
  * @version: 1.0
  */
+@JsonInclude(JsonInclude.Include.NON_NULL )
 public class ResultVo<T> {
 	private int code;
 	private String message;
@@ -50,33 +56,46 @@ public class ResultVo<T> {
 		this.code = code;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> ResultVo<T> createSuccessResult(String message, T data) {
 		return new ResultVo(ResultEnum.SUCCESS.getCode(), message, data);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> ResultVo<T> createSuccessResult(Integer code) {
 		return new ResultVo(code);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> ResultVo<T> createErrorResult(String message, T data) {
 		return new ResultVo(ResultEnum.ERROR.getCode(), message, data);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> ResultVo<T> createSuccessResult(T data) {
 		return new ResultVo(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMessage(), data);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static <T> ResultVo<T> createErrorResult(T data) {
-		return new ResultVo(ResultEnum.ERROR.getCode(), ResultEnum.SUCCESS.getMessage(), data);
+
+	public static <T> ResultVo<T> createSuccessResult(String message) {
+		return new ResultVo(ResultEnum.SUCCESS.getCode(), message, null);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public static <T> ResultVo<T> createErrorResult(T data) {
+		return new ResultVo(ResultEnum.ERROR.getCode(), ResultEnum.ERROR.getMessage(), data);
+	}
+
+	public static <T> ResultVo<T> createErrorResult(String excptingMsg) {
+		return new ResultVo(ResultEnum.ERROR.getCode(), excptingMsg, null);
+	}
+
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> ResultVo<T> createErrorResult(Integer code) {
 		return new ResultVo(code);
 	}
+
+
+
+
 }
