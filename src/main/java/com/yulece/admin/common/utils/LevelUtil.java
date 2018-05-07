@@ -15,7 +15,7 @@ public class LevelUtil {
 
     private static final String SEPARATOR = ".";
 
-    private static final String ROOT = "0";
+    public static final String ROOT = "0";
 
     public static String calculateLevel(String parentLevel,Integer parentId){
         if(StringUtils.isBlank(parentLevel)){
