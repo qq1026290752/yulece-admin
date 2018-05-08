@@ -1,5 +1,6 @@
 package com.yulece.admin.service.admin;
 
+import com.yulece.admin.dto.admin.DeptLevelDto;
 import com.yulece.admin.vo.admin.DeptParam;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,4 +17,17 @@ import java.lang.reflect.InvocationTargetException;
 public interface DeptService {
 
     void save(DeptParam deptParam) ;
+
+    /**
+     * 更新部门
+     * @param deptParam
+     */
+    void update(DeptParam deptParam);
+
+    /**
+     * 根据ID查询部门
+     * @param id
+     * @return
+     */
+    DeptLevelDto getId(Integer id);
 }

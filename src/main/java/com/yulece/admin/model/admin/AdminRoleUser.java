@@ -3,6 +3,7 @@ package com.yulece.admin.model.admin;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -17,6 +18,7 @@ import javax.persistence.Entity;
 @Data
 public class AdminRoleUser {
 
+    @Id
     private Integer roleUserId;
     private Integer roleId;
     private Integer userId;

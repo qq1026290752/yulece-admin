@@ -1,11 +1,10 @@
 package com.yulece.admin.model.admin;
 
 import lombok.Builder;
-import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.Table;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -18,6 +17,7 @@ import java.util.Date;
  **/
 @Entity
 @Builder
+@Table(name = "admin_dept")
 public class AdminDept {
 
     @Id

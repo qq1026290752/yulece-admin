@@ -8,12 +8,8 @@ import com.yulece.admin.vo.admin.DeptParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -47,5 +43,16 @@ public class AdminDeptController {
     public ResultVo resultVo(){
         List<DeptLevelDto> deptLevelDtos = treeService.deptTree();
         return ResultVo.createSuccessResult(deptLevelDtos);
+    }
+
+    @PutMapping("/")
+    public ResultVo update(DeptParam deptParam){
+        deptService.update(deptParam);
+        return ResultVo.createSuccessResult();
+    }
+    @GetMapping("/{deptId}")
+    public ResultVo getId(@PathVariable("deptId")Integer id){
+        DeptLevelDto deptLevelDto = deptService.getId(id);
+        return ResultVo.createSuccessResult(deptLevelDto);
     }
 }

@@ -28,7 +28,7 @@ public class DeptParam {
 
     @Length(max = 50,message = "备注长度需要控制在50个字之内")
     private String deptRemark;
-    private Integer deptParentId;
+    private Integer deptParentId = 0;
 
     public Integer getDeptId() {
         return deptId;

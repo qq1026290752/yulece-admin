@@ -8,7 +8,8 @@ package com.yulece.admin.common.enums;
  * @version: 1.0
  */
 public enum ExceptionEnum {
-    COPY_BEAN_ERROR(20,"实体拷贝异常")
+    COPY_BEAN_ERROR(20,"实体拷贝异常"),
+    DEPT_NOT_NULL(30,"当前查询部门为空")
 	;
 	private Integer code;
     private String message;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yulece.admin.mapper.dept.DeptMapper">
+
+    <resultMap id="adminDeptResult" type="AdminDept">
+        <id column="dept_id" property="deptId"/>
+        <result property="deptName" column="dept_name"/>
+        <result property="deptLevel" column="dept_level"/>
+        <result property="deptSeq" column="dept_seq"/>
+        <result property="deptRemark" column="dept_remark"/>
+        <result property="deptParentId" column="dept_parent_id"/>
+        <result property="operator" column="operator"/>
+        <result property="operateIp" column="operate_ip"/>
+    </resultMap>
+
+
+    <select id="getOne" parameterType="java.lang.Integer" resultMap="adminDeptResult">
+      select  * from admin_dept where dept_id = #{value}
+    </select>
+
+    <select id="getDeptChildListByLevel" resultMap="adminDeptResult">
+        select * from admin_dept where dept_level like #{value } ||'.%'
+    </select>
+
+    <update id="batchUpdateLavel" parameterType="map">
+      <foreach collection="adminDepts" index="dept" separator=";">
+          update admin_dept
+          set dept_level = #{dept.deptLevel}
+          where dept_id = #{dept.deptId}
+      </foreach>
+    </update>
+
+    <select id="countByNameAndParentId" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*) from admin_dept
+        where dept_name =#{name}
+        <if test="parentId!=null">
+         and dept_parent_id = #{parentId}
+        </if>
+        <if test="deptId!=null">
+          and dept_id != #{deptId}
+        </if>
+    </select>
+</mapper>
