@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @Date 创建时间2018/5/6-16:45
  **/
 @Configuration
-public class MvcInterceptor implements WebMvcConfigurer {
+public abstract class MvcInterceptor implements WebMvcConfigurer {
 
     /**
      * 配置拦截器

@@ -2,9 +2,7 @@ package com.yulece.admin.model.admin;
 
 import lombok.Builder;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -21,6 +19,7 @@ import javax.persistence.Table;
 public class AdminDept {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer deptId;
     private String deptName;
     private String deptLevel;

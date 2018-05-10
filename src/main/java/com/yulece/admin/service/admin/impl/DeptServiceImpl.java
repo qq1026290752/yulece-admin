@@ -65,12 +65,12 @@ public class DeptServiceImpl implements DeptService {
         if(checkDeptExist(deptParam.getDeptParentId(),deptParam.getDeptName(),deptParam.getDeptId())){
             throw new YuleceException(ParamEnum.DEPT_NAME_EXIST);
         }
-        AdminDept beforeDept = deptRepository.getOne(deptParam.getDeptId());
+        AdminDept beforeDept = deptMapper.getOne(deptParam.getDeptId());
         Preconditions.checkNotNull(beforeDept,"该更新部门不存在");
         AdminDept adminDept = new AdminDept();
         //开始属性拷贝
         try {
-            BeanUtils.copyProperties(deptParam,adminDept);
+            BeanUtils.copyProperties(adminDept,deptParam);
         } catch (Exception e) {
             throw new YuleceException(ExceptionEnum.COPY_BEAN_ERROR);
         }
@@ -91,13 +91,12 @@ public class DeptServiceImpl implements DeptService {
 
     @Transactional
     public void updateWithChild(AdminDept before,AdminDept after){
-
         String newLevelPrefix = after.getDeptLevel();
         String oldLevelPrefix = before.getDeptLevel();
         if(!StringUtils.equals(newLevelPrefix,oldLevelPrefix)){
             List<AdminDept> adminDepts = deptMapper.getDeptChildListByLevel(before.getDeptLevel());
             //判断集合是否为空
-            if(CollectionUtils.isEmpty(adminDepts)){
+            if(!CollectionUtils.isEmpty(adminDepts)){
                   for(AdminDept dept:adminDepts){
                       //取出当前的等级
                       String level = dept.getDeptLevel();
@@ -108,7 +107,7 @@ public class DeptServiceImpl implements DeptService {
                           dept.setDeptLevel(level);
                       }
                   }
-                  deptMapper.batchUpdateLavel(adminDepts);
+                  deptMapper.batchUpdateLevel(adminDepts);
             }
         }
         //更新部门
@@ -121,7 +120,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     private String getLavel(Integer deptId){
-        AdminDept adminDept = deptRepository.getOne(deptId);
+        AdminDept adminDept = deptMapper.getOne(deptId);
         if(adminDept == null){
             return null;
         }

@@ -17,14 +17,14 @@
 
 
     <select id="getOne" parameterType="java.lang.Integer" resultMap="adminDeptResult">
-      select  * from admin_dept where dept_id = #{value}
+      select  * from admin_dept where dept_id = #{id}
     </select>
 
     <select id="getDeptChildListByLevel" resultMap="adminDeptResult">
         select * from admin_dept where dept_level like #{value } ||'.%'
     </select>
 
-    <update id="batchUpdateLavel" parameterType="map">
+    <update id="batchUpdateLevel" parameterType="map">
       <foreach collection="adminDepts" index="dept" separator=";">
           update admin_dept
           set dept_level = #{dept.deptLevel}

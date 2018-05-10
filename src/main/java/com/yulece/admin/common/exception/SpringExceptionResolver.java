@@ -39,6 +39,7 @@ public class SpringExceptionResolver{
             response.setContentType(MediaType.APPLICATION_JSON_UTF8.toString());
             response.getWriter().print( objectMapper.writeValueAsString(ResultVo.createErrorResult(e.getMessage())));
         }else{
+
             response.setContentType("text/html;charset=UTF-8");
             response.getWriter().print(objectMapper.writeValueAsString(ResultVo.createErrorResult("服务器内部异常请联系管理员")));
         }

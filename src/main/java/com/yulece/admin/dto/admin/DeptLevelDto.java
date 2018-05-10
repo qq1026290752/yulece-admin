@@ -33,7 +33,7 @@ public class DeptLevelDto extends AdminDept {
     public static DeptLevelDto adapt(AdminDept adminDept) throws YuleceException{
         DeptLevelDto deptLevelDto = new DeptLevelDto();
         try {
-            BeanUtils.copyProperties(adminDept,deptLevelDto);
+            BeanUtils.copyProperties(deptLevelDto,adminDept);
         } catch (Exception e) {
             throw new YuleceException(ExceptionEnum.COPY_BEAN_ERROR);
         }

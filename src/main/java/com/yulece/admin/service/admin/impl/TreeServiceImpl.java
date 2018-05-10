@@ -67,7 +67,7 @@ public class TreeServiceImpl implements TreeService {
         Collections.sort(rootList, deptSeqComparator);
         //循环递归树
         transformDeptTree(rootList,LevelUtil.ROOT,deptLevelDtoMap);
-        return deptLevelDtos;
+        return rootList;
     }
 
     private void transformDeptTree(List<DeptLevelDto> deptLevelDtos,String level,Multimap<String,DeptLevelDto> deptLevelDtoMap){
@@ -79,7 +79,7 @@ public class TreeServiceImpl implements TreeService {
             //拿到下一层数据
             List<DeptLevelDto> deptLevelList = (List<DeptLevelDto>) deptLevelDtoMap.get(nextLevel);
             //下一层排序
-            if(CollectionUtils.isEmpty(deptLevelList)){
+            if(!CollectionUtils.isEmpty(deptLevelList)){
                 //排序
                 Collections.sort(deptLevelList, deptSeqComparator);
                 //把下一层加入到本层

@@ -33,10 +33,10 @@ public class AdminDeptController {
     private TreeService treeService;
 
 
-    @PostMapping("/")
+    @PostMapping()
     public ResultVo saveDept(DeptParam deptParam){
         deptService.save(deptParam);
-        return ResultVo.createSuccessResult();
+        return ResultVo.createSuccessResult("数据添加成功!");
     }
 
     @GetMapping("/tree")
@@ -45,10 +45,10 @@ public class AdminDeptController {
         return ResultVo.createSuccessResult(deptLevelDtos);
     }
 
-    @PutMapping("/")
+    @PutMapping()
     public ResultVo update(DeptParam deptParam){
         deptService.update(deptParam);
-        return ResultVo.createSuccessResult();
+        return ResultVo.createSuccessResult("数据修改成功!");
     }
     @GetMapping("/{deptId}")
     public ResultVo getId(@PathVariable("deptId")Integer id){

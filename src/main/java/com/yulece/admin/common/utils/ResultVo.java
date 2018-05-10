@@ -18,6 +18,7 @@ import java.util.Map;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL )
 public class ResultVo<T> {
+
 	private int code;
 	private String message;
 	private T data;
@@ -63,7 +64,7 @@ public class ResultVo<T> {
 
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> ResultVo<T> createSuccessResult() {
-		return new ResultVo(ResultEnum.SUCCESS.getCode());
+		return new ResultVo(ResultEnum.SUCCESS.getCode(),"",null);
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"})

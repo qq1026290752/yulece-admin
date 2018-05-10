@@ -20,7 +20,7 @@ public interface DeptMapper  {
 
     List<AdminDept> getDeptChildListByLevel(@Param("value") String level);
 
-    void batchUpdateLavel(@Param("adminDepts") List<AdminDept> adminDepts);
+    void batchUpdateLevel(@Param("adminDepts") List<AdminDept> adminDepts);
 
     Integer countByNameAndParentId(@Param("name") String name,
                                @Param("parentId") Integer parentId,
