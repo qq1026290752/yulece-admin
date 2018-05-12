@@ -1,4 +1,4 @@
-package com.yulece.admin.mapper.dept;
+package com.yulece.admin.mapper.admin;
 
 import com.yulece.admin.model.admin.AdminDept;
 import org.apache.ibatis.annotations.Param;

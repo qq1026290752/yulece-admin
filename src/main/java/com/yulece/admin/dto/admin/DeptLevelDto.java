@@ -6,7 +6,6 @@ import com.yulece.admin.model.admin.AdminDept;
 import org.apache.commons.beanutils.BeanUtils;
 import org.assertj.core.util.Lists;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**

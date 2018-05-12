@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yulece.admin.mapper.dept.DeptMapper">
+<mapper namespace="com.yulece.admin.mapper.admin.DeptMapper">
 
     <resultMap id="adminDeptResult" type="AdminDept">
         <id column="dept_id" property="deptId"/>
@@ -21,14 +21,14 @@
     </select>
 
     <select id="getDeptChildListByLevel" resultMap="adminDeptResult">
-        select * from admin_dept where dept_level like #{value } ||'.%'
+        select * from admin_dept where dept_level like concat(concat(#{value}),".%")
     </select>
 
     <update id="batchUpdateLevel" parameterType="map">
-      <foreach collection="adminDepts" index="dept" separator=";">
-          update admin_dept
-          set dept_level = #{dept.deptLevel}
-          where dept_id = #{dept.deptId}
+      <foreach collection="adminDepts" item="dept" separator=";">
+          UPDATE admin_dept
+          SET dept_level = #{dept.deptLevel}
+          WHERE dept_id = #{dept.deptId}
       </foreach>
     </update>
 

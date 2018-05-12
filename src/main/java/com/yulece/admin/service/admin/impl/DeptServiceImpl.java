@@ -6,7 +6,7 @@ import com.yulece.admin.common.exception.YuleceException;
 import com.yulece.admin.common.utils.BeanValidator;
 import com.yulece.admin.common.utils.LevelUtil;
 import com.yulece.admin.dto.admin.DeptLevelDto;
-import com.yulece.admin.mapper.dept.DeptMapper;
+import com.yulece.admin.mapper.admin.DeptMapper;
 import com.yulece.admin.model.admin.AdminDept;
 import com.yulece.admin.repository.admin.DeptRepository;
 import com.yulece.admin.service.admin.DeptService;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -105,9 +104,10 @@ public class DeptServiceImpl implements DeptService {
                           //更新当前lavel
                           level = newLevelPrefix + level.substring(oldLevelPrefix.length());
                           dept.setDeptLevel(level);
+                          deptRepository.save(dept);
                       }
                   }
-                  deptMapper.batchUpdateLevel(adminDepts);
+//                deptMapper.batchUpdateLevel(adminDepts);
             }
         }
         //更新部门
