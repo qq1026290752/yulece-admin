@@ -3,6 +3,7 @@ package com.yulece.admin;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**   
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.yulece.admin.mapper")
+@EnableAsync
 public class AdminApplication {
 
 	public static void main(String[] args) {

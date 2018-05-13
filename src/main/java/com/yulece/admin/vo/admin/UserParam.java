@@ -36,10 +36,6 @@ public class UserParam {
     private Integer userDept;//用户所属部门
     @NotBlank(message = "请上上传您喜爱的头像")
     private String headerUrl;
-    @Min(value = 0,message = "用户状态不合法")
-    @Max(value = 2,message = "用户状态不合法")
-    @NotNull(message = "用户状态不能为空")
-    private Integer status;
     @Length(min = 0 ,max =64 ,message ="用户备注长度应在6-40为之间" )
     private String userRemark="";//备注
 
@@ -97,14 +93,6 @@ public class UserParam {
 
     public void setHeaderUrl(String headerUrl) {
         this.headerUrl = headerUrl;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public String getUserRemark() {

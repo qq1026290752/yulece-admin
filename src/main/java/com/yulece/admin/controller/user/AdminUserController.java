@@ -1,13 +1,13 @@
 package com.yulece.admin.controller.user;
 
 import com.yulece.admin.common.utils.ResultVo;
+import com.yulece.admin.model.admin.AdminUser;
 import com.yulece.admin.service.admin.UserService;
 import com.yulece.admin.vo.admin.UserParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -34,5 +34,12 @@ public class AdminUserController {
     public ResultVo update(UserParam param){
         userService.update(param);
         return ResultVo.createSuccessResult("数据修改成功!");
+    }
+
+
+    @GetMapping("/page")
+    public ResultVo pageList(@RequestParam("id")Integer deptId, Pageable request){
+        Page<AdminUser> adminUserPage = userService.page(deptId, request);
+        return ResultVo.createSuccessResult(adminUserPage);
     }
 }

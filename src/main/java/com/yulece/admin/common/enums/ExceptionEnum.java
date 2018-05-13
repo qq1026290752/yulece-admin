@@ -9,9 +9,11 @@ package com.yulece.admin.common.enums;
  */
 public enum ExceptionEnum {
     COPY_BEAN_ERROR(0,"实体拷贝异常"),
+    MAIL_ACTIVATE_ERROR(1,"邮箱激活时间已过期,请重新激活"),
     /*用户相关异常*/
     USER_MAIL_ERROR(31,"用户email异常"),
     USER_TELEPHONE_ERROR(32,"用户手机号异常"),
+    USER_USERNAME_ERROR(33,"用户名异常"),
     /*部门相关异常*/
     DEPT_NOT_NULL(51,"当前查询部门为空")
 	;

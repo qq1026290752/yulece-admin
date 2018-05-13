@@ -1,6 +1,9 @@
 package com.yulece.admin.service.admin;
 
+import com.yulece.admin.model.admin.AdminUser;
 import com.yulece.admin.vo.admin.UserParam;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -16,4 +19,12 @@ public interface UserService {
     void save(UserParam userParam);
 
     void update(UserParam userParam);
+
+    Page<AdminUser> page(Integer deptId, Pageable pageable);
+
+    /**
+     * 激活用户
+     * @param key
+     */
+    void enable(String key);
 }

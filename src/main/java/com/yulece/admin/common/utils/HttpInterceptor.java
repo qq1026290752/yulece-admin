@@ -21,6 +21,7 @@ import java.util.Map;
  * @Description:
  * @Date 创建时间2018/5/6-16:20
  **/
+@Component
 public class HttpInterceptor extends HandlerInterceptorAdapter {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
@@ -35,17 +36,19 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
         //获取到参数
         Map<String, String[]> parameterMap = request.getParameterMap();
         LOGGER.info("request start:url：{} -> parameter:{}",url,objectMapper.writeValueAsString(parameterMap));
+        //添加request
+        RequestHoder.add(request);
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-     /*   //进入方法 打印异常
+      //进入方法 打印异常
         //获取到UEL
         String url = request.getRequestURL().toString();
         //获取到参数
         Map<String, String[]> parameterMap = request.getParameterMap();
-        LOGGER.info("request end:url：{} -> parameter:{}",url,objectMapper.writeValueAsString(parameterMap));*/
+        LOGGER.info("request end:url：{} -> parameter:{}",url,objectMapper.writeValueAsString(parameterMap));
     }
 
     @Override
@@ -56,5 +59,14 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
         //获取到参数
         Map<String, String[]> parameterMap = request.getParameterMap();
         LOGGER.info("request afterCompletion:url：{} -> parameter:{}",url,objectMapper.writeValueAsString(parameterMap));
+
+        removeThThreadLocal();
+    }
+
+    /**
+     * 删除ThThreadLocal中的所有原生
+     */
+    private void removeThThreadLocal(){
+        RequestHoder.remove();
     }
 }
