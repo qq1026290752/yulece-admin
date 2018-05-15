@@ -10,14 +10,14 @@ import java.util.Date;
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
  *
  * @author wangyichao@28ph.cn
- * @Title: adminDclModule
+ * @Title: AdminAclModule
  * @Package com.yulece.admin.model.admin
  * @Description:
  * @Date 创建时间2018/5/6-17:14
  **/
 @Data
 @Entity
-public class adminDclModule {
+public class AdminAclModule {
 
     @Id
     private Integer moduleId;

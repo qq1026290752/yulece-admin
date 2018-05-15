@@ -26,8 +26,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -51,12 +49,12 @@ public class UserServiceImpl implements UserService {
     @Value("${domain.address}")
     private String address;
 
-    private final Cache<String,String> registerCache = CacheBuilder.newBuilder().
-            maximumSize(100).expireAfterAccess(1,TimeUnit.MINUTES).
+    final Cache<String,String> registerCache = CacheBuilder.newBuilder().
+            maximumSize(100).expireAfterAccess(2,TimeUnit.MINUTES).
             removalListener(new RemovalListener<String, String>() {
         @Override
         public void onRemoval(RemovalNotification<String, String> notification) {
-            LOGGER.info("邮箱{}超过5f分钟未被激活,删除此用户邮箱",notification.getValue());
+            LOGGER.info("邮箱{}超过5分钟未被激活,删除此用户邮箱",notification.getValue());
             userRepository.deleteByMail(notification.getValue());
         }
     }).build();
@@ -148,8 +146,11 @@ public class UserServiceImpl implements UserService {
        //邮箱地址
         String mail = registerCache.getIfPresent(key);
         if(StringUtils.isBlank(mail)){
+            //删除缓存中的KEY
+            registerCache.invalidate(key);
             throw new YuleceException(ExceptionEnum.MAIL_ACTIVATE_ERROR);
         }
+        //用户状态为已激活
         userRepository.updateStatusWhereMail(UserStatusEnum.NORMAL_STATUS.getCode(),mail);
 
     }

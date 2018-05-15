@@ -1,12 +1,15 @@
 package com.yulece.admin.repository.admin;
 
 import com.yulece.admin.model.admin.AdminUser;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
@@ -75,8 +78,11 @@ public interface UserRepository extends JpaRepository<AdminUser,Integer> {
             nativeQuery = true)
     Page<AdminUser> page(Integer deptId, Pageable pageable);
 
+    @Modifying@Transactional
+    @Query(value = "delete from admin_user where mail =?1",nativeQuery = true)
+    Integer deleteByMail(String mail);
 
-    AdminUser deleteByMail(String mail);
-    @Query(value = "update admin_user set status = ?1 where mail = ?2 ",nativeQuery = true)
-    void updateStatusWhereMail(@Param("status") Integer status,@Param("mail") String mail);
+    @Modifying@Transactional
+    @Query(value = "update admin_user set status=?1 where mail = ?2",nativeQuery = true)
+    int updateStatusWhereMail(Integer status, String mail);
 }
