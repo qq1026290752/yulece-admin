@@ -4,7 +4,9 @@ import com.yulece.admin.common.enums.ExceptionEnum;
 import com.yulece.admin.common.enums.ParamEnum;
 import com.yulece.admin.common.exception.YuleceException;
 import com.yulece.admin.common.utils.BeanValidator;
+import com.yulece.admin.common.utils.IpUtil;
 import com.yulece.admin.common.utils.LevelUtil;
+import com.yulece.admin.common.utils.RequestHoder;
 import com.yulece.admin.dto.admin.DeptLevelDto;
 import com.yulece.admin.mapper.admin.DeptMapper;
 import com.yulece.admin.model.admin.AdminDept;
@@ -54,7 +56,7 @@ public class DeptServiceImpl implements DeptService {
 
         adminDept.setDeptLevel(LevelUtil.calculateLevel(getLavel(adminDept.getDeptParentId()),adminDept.getDeptParentId()));
         adminDept.setOperator("admin");//TODO
-        adminDept.setOperateIp("127.0.0.1");//todo
+        adminDept.setOperateIp(IpUtil.getRemoteIp(RequestHoder.getHttpServletRequest()));
         deptRepository.save(adminDept);
     }
 
@@ -75,7 +77,7 @@ public class DeptServiceImpl implements DeptService {
         }
         adminDept.setDeptLevel(LevelUtil.calculateLevel(getLavel(adminDept.getDeptParentId()),adminDept.getDeptParentId()));
         adminDept.setOperator("admin");//TODO
-        adminDept.setOperateIp("127.0.0.1");//todo
+        adminDept.setOperateIp(IpUtil.getRemoteIp(RequestHoder.getHttpServletRequest()));//todo
         updateWithChild(beforeDept,adminDept);
     }
 

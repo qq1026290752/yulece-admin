@@ -1,5 +1,6 @@
 package com.yulece.admin.service.admin;
 
+import com.yulece.admin.dto.admin.AclModuleLevelDto;
 import com.yulece.admin.dto.admin.DeptLevelDto;
 
 import java.util.List;
@@ -16,4 +17,6 @@ import java.util.List;
 public interface TreeService {
 
     List<DeptLevelDto> deptTree();
+
+    List<AclModuleLevelDto> aclModuleTree();
 }

@@ -15,7 +15,8 @@ public enum ExceptionEnum {
     USER_TELEPHONE_ERROR(32,"用户手机号异常"),
     USER_USERNAME_ERROR(33,"用户名异常"),
     /*部门相关异常*/
-    DEPT_NOT_NULL(51,"当前查询部门为空")
+    DEPT_NOT_NULL(51,"当前查询部门为空"),
+    ACL_MODEL_NAME_EXIST_NULL(61,"权限模块名称不能重复")
 	;
 	private Integer code;
     private String message;
