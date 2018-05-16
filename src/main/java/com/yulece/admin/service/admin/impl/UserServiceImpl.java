@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
         newAdminUser.setStatus(UserStatusEnum.NONACTIVATED_STATUS.getCode());
         newAdminUser.setPassWord(HashUtils.entryPassWord(password));
         newAdminUser.setOperator("admin");//TODO
-        newAdminUser.setOperateIp(IpUtil.getRemoteIp(RequestHoder.getHttpServletRequest()));//todo
+        newAdminUser.setOperateIp(IpUtil.getRemoteIp(RequestHoder.getHttpServletRequest()));
         registerNotify(newAdminUser.getMail(),password);
         userRepository.save(newAdminUser);
 

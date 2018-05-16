@@ -376,3 +376,5 @@ CREATE TABLE `order_master`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '订单主表' ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
+ALTER TABLE `yulece_aike`.`admin_acl`
+MODIFY COLUMN `acl_url` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'url' AFTER `acl_module_id`;

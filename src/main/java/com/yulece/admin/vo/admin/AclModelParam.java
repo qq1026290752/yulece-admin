@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
  * @Description:
  * @Date 创建时间2018/5/15-20:28
  **/
-@Getter
-@Setter
 public class AclModelParam {
 
     private Integer moduleId;
@@ -36,4 +34,51 @@ public class AclModelParam {
     @Length(message = "权限模块备注不能小于2,不能大于200",max = 190,min = 2)
     private String moduleRemark;
 
+    public Integer getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(Integer moduleId) {
+        this.moduleId = moduleId;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getModuleParentId() {
+        return moduleParentId;
+    }
+
+    public void setModuleParentId(Integer moduleParentId) {
+        this.moduleParentId = moduleParentId;
+    }
+
+    public Integer getModuleSeq() {
+        return moduleSeq;
+    }
+
+    public void setModuleSeq(Integer moduleSeq) {
+        this.moduleSeq = moduleSeq;
+    }
+
+    public String getModuleRemark() {
+        return moduleRemark;
+    }
+
+    public void setModuleRemark(String moduleRemark) {
+        this.moduleRemark = moduleRemark;
+    }
 }

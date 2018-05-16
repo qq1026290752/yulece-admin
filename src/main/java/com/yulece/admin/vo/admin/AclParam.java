@@ -1,32 +1,43 @@
-package com.yulece.admin.model.admin;
+package com.yulece.admin.vo.admin;
 
+import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.xml.crypto.Data;
 
 /**
  * Copyright © 2018 eSunny Info. Tech Ltd. All rights reserved.
- * 权限模块实体类
+ * 权限点信息参数
  * @author wangyichao@28ph.cn
- * @Title: AdminAcl
- * @Package com.yulece.admin.model.admin
+ * @Title: AclParam
+ * @Package com.yulece.admin.vo.admin
  * @Description:
- * @Date 创建时间2018/5/3-23:47
+ * @Date 创建时间2018/5/16-20:33
  **/
-@Entity
-public class AdminAcl {
+public class AclParam {
 
-    @Id
-    private Integer aclId;//权限模块
+    private Integer aclId;
+    @NotBlank(message = "权限点信息不能为空")
+    @Length(message = "权限点名称长度应在2-20之间",max = 20,min = 2)
     private String aclName;
+    @NotNull(message = "请选择对应你的权限模块")
     private Integer aclModuleId;
+
+    @Length(message = "权限点地址长度应在2-200之间",max = 200,min = 2)
     private String aclUrl;
-    private Integer type;
     private Integer status;
+    @NotNull(message = "必须制定权限点的类型")
+    @Max(value = 2,message = "权限点的类型不正确")
+    @Min(value = 0,message = "权限点的类型不正确")
+    private Integer type;
+    @NotNull(message = "权限点在该模块中的排序不能为空")
     private Integer aclSeq;
+
+    @Length(message = "权限点备注长度应在2-64之间",max = 64,min = 2)
     private String aclRemark;
-    private String operator;
-    private String operateIp;
 
     public Integer getAclId() {
         return aclId;
@@ -90,21 +101,5 @@ public class AdminAcl {
 
     public void setAclRemark(String aclRemark) {
         this.aclRemark = aclRemark;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
-
-    public String getOperateIp() {
-        return operateIp;
-    }
-
-    public void setOperateIp(String operateIp) {
-        this.operateIp = operateIp;
     }
 }
