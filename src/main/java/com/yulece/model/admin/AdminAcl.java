@@ -2,6 +2,8 @@ package com.yulece.model.admin;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -17,6 +19,7 @@ import javax.persistence.Id;
 public class AdminAcl {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer aclId;//权限模块
     private String aclName;
     private Integer aclModuleId;

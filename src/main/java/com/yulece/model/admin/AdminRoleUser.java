@@ -3,6 +3,8 @@ package com.yulece.model.admin;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -19,6 +21,7 @@ import javax.persistence.Id;
 public class AdminRoleUser {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleUserId;
     private Integer roleId;
     private Integer userId;

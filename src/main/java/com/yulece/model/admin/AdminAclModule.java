@@ -2,6 +2,8 @@ package com.yulece.model.admin;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ import java.util.Date;
 public class AdminAclModule {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer moduleId;
     private String moduleName;
     private Integer moduleParentId;

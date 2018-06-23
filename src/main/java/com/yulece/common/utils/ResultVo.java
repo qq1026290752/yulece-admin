@@ -53,6 +53,12 @@ public class ResultVo<T> {
 		this.message = message;
 	}
 
+	public ResultVo(int code, T data) {
+		this.code = code;
+		this.data = data;
+		this.message = ResultEnum.SUCCESS.getMessage();
+	}
+
 	private ResultVo(Integer code) {
 		this.code = code;
 	}
@@ -64,7 +70,7 @@ public class ResultVo<T> {
 
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static <T> ResultVo<T> createSuccessResult() {
-		return new ResultVo(ResultEnum.SUCCESS.getCode(),"",null);
+		return new ResultVo(ResultEnum.SUCCESS.getCode(),null);
 	}
 
 	@SuppressWarnings({"unchecked", "rawtypes"})

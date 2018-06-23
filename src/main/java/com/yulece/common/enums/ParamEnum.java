@@ -10,7 +10,9 @@ package com.yulece.common.enums;
  * @Date 创建时间2018/5/6-21:24
  **/
 public enum ParamEnum {
-    DEPT_NAME_EXIST(0,"部门名称在同一级目录下不能重复.")
+    DEPT_NAME_EXIST(0,"部门名称在同一级目录下不能重复."),
+    CATEGORY_NAME_EXIST(1,"课程类目名称不能重复"),
+    CATEGORY_TYPE_EXIST(2,"课程类类型称不能重复"),
     ;
 
     private int code;
