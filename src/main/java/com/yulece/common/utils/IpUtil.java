@@ -2,6 +2,8 @@ package com.yulece.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
@@ -9,8 +11,9 @@ import java.net.UnknownHostException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Slf4j
 public class IpUtil {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(IpUtil.class);
 
     public final static String ERROR_IP = "127.0.0.1";
 
@@ -101,13 +104,13 @@ public class IpUtil {
      */
     public static boolean isValidIP(String ip) {
         if (StringUtils.isEmpty(ip)) {
-            log.debug("ip is null. valid result is false");
+            LOGGER.debug("ip is null. valid result is false");
             return false;
         }
 
         Matcher matcher = pattern.matcher(ip);
         boolean isValid = matcher.matches();
-        log.debug("valid ip:" + ip + " result is: " + isValid);
+        LOGGER.debug("valid ip:" + ip + " result is: " + isValid);
         return isValid;
     }
 

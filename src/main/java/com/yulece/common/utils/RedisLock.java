@@ -2,6 +2,8 @@ package com.yulece.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -16,9 +18,9 @@ import org.springframework.stereotype.Component;
  * @Date 创建时间2018/5/29-21:41
  **/
 @Component
-@Slf4j
 public class RedisLock {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RedisLock.class);
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -49,7 +51,7 @@ public class RedisLock {
                 stringRedisTemplate.delete(key);
             }
         }catch (Exception e){
-            log.error("[分布式锁]:解锁异常 " );
+            LOGGER.error("[分布式锁]:解锁异常 " );
         }
     }
 
